@@ -2,8 +2,7 @@ import java.util.List;
 
 import processing.core.PImage;
 
-public final class Background
-{
+public final class Background {
     public String id;
     public List<PImage> images;
     public int imageIndex;

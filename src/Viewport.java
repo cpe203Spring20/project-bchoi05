@@ -9,4 +9,25 @@ public final class Viewport
         this.numRows = numRows;
         this.numCols = numCols;
     }
+
+    public Point viewportToWorld(int col1, int row1) {
+        return new Point(col1 + col, row1 + row);
+    }
+
+    public void shift(int col1, int row1) {
+        col = col1;
+        row = row1;
+    }
+
+    public boolean contains(Point p) {
+        return p.y >= row && p.y < row + numRows
+                && p.x >= col && p.x < col + numCols;
+    }
+
+
+    public Point worldToViewport(int col1, int row1) {
+        return new Point(col1 - col, row1 - row);
+    }
+
+
 }
