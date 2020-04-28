@@ -42,7 +42,6 @@ public final class ImageStore {
         }
     }
 
-
     public static void processImageLine(
             Map<String, List<PImage>> images, String line, PApplet screen) {
         String[] attrs = line.split("\\s");
@@ -62,6 +61,7 @@ public final class ImageStore {
             }
         }
     }
+
     public static PImage getCurrentImage(Object entity) {
         if (entity instanceof Background) {
             return ((Background) entity).images.get(
