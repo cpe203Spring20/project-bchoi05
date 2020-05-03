@@ -320,7 +320,7 @@ public final class Entity {
     }
 
 
-    private boolean transformNotFull(
+    public boolean transformNotFull(
             WorldModel world,
             EventScheduler scheduler,
             ImageStore imageStore)
@@ -343,7 +343,7 @@ public final class Entity {
         return false;
     }
 
-    private void transformFull(
+    public void transformFull(
             WorldModel world,
             EventScheduler scheduler,
             ImageStore imageStore)
