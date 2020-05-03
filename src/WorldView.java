@@ -4,11 +4,11 @@ import processing.core.PImage;
 import java.util.Optional;
 
 public final class WorldView {
-    public PApplet screen;
-    public WorldModel world;
-    public int tileWidth;
-    public int tileHeight;
-    public Viewport viewport;
+    private PApplet screen;
+    private WorldModel world;
+    private int tileWidth;
+    private int tileHeight;
+    private Viewport viewport;
 
     public WorldView(
             int numRows,
@@ -48,7 +48,7 @@ public final class WorldView {
 
             if (viewport.contains(pos)) {
                 Point viewPoint = viewport.worldToViewport(pos.x, pos.y);
-                screen.image(ImageStore.getCurrentImage(entity),
+                screen.image(WorldModel.getCurrentImage(entity),
                         viewPoint.x * tileWidth,
                         viewPoint.y * tileHeight);
             }

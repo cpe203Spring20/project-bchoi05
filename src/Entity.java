@@ -7,30 +7,30 @@ import processing.core.PImage;
 
 public final class Entity {
     public EntityKind kind;
-    public String id;
+    private String id;
     public Point position;
     public List<PImage> images;
     public int imageIndex;
-    public int resourceLimit;
+    private int resourceLimit;
     public int resourceCount;
-    public int actionPeriod;
-    public int animationPeriod;
+    private int actionPeriod;
+    private int animationPeriod;
 
-    public static final String QUAKE_KEY = "quake";
-    public static final String QUAKE_ID = "quake";
-    public static final int QUAKE_ACTION_PERIOD = 1100;
-    public static final int QUAKE_ANIMATION_PERIOD = 100;
-    public static final Random rand = new Random();
-    public static final String BLOB_KEY = "blob";
-    public static final String BLOB_ID_SUFFIX = " -- blob";
-    public static final int BLOB_PERIOD_SCALE = 4;
-    public static final int BLOB_ANIMATION_MIN = 50;
-    public static final int BLOB_ANIMATION_MAX = 150;
-    public static final int QUAKE_ANIMATION_REPEAT_COUNT = 10;
-    public static final String ORE_KEY = "ore";
-    public static final String ORE_ID_PREFIX = "ore -- ";
-    public static final int ORE_CORRUPT_MIN = 20000;
-    public static final int ORE_CORRUPT_MAX = 30000;
+    private static final String QUAKE_KEY = "quake";
+    private static final String QUAKE_ID = "quake";
+    private static final int QUAKE_ACTION_PERIOD = 1100;
+    private static final int QUAKE_ANIMATION_PERIOD = 100;
+    private static final Random rand = new Random();
+    private static final String BLOB_KEY = "blob";
+    private static final String BLOB_ID_SUFFIX = " -- blob";
+    private static final int BLOB_PERIOD_SCALE = 4;
+    private static final int BLOB_ANIMATION_MIN = 50;
+    private static final int BLOB_ANIMATION_MAX = 150;
+    private static final int QUAKE_ANIMATION_REPEAT_COUNT = 10;
+    private static final String ORE_KEY = "ore";
+    private static final String ORE_ID_PREFIX = "ore -- ";
+    private static final int ORE_CORRUPT_MIN = 20000;
+    private static final int ORE_CORRUPT_MAX = 30000;
 
     public Entity(
             EntityKind kind,
@@ -358,6 +358,23 @@ public final class Entity {
 
         world.addEntity(miner);
         scheduleActions(scheduler, world, imageStore);
+    }
+
+    public Point nextPositionMiner(WorldModel world, Point destPos)
+    {
+        int horiz = Integer.signum(destPos.x - position.x);
+        Point newPos = new Point(position.x + horiz, position.y);
+
+        if (horiz == 0 || world.isOccupied(newPos)) {
+            int vert = Integer.signum(destPos.y - position.y);
+            newPos = new Point(position.x, position.y + vert);
+
+            if (vert == 0 || world.isOccupied(newPos)) {
+                newPos = position;
+            }
+        }
+
+        return newPos;
     }
 
 

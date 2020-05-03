@@ -6,8 +6,8 @@ public final class WorldModel
 {
     public int numRows;
     public int numCols;
-    public Background background[][];
-    public Entity occupancy[][];
+    private Background background[][];
+    private Entity occupancy[][];
     public Set<Entity> entities;
 
     public static final int ORE_REACH = 1;
@@ -54,7 +54,7 @@ public final class WorldModel
             Point pos)
     {
         if (withinBounds(pos)) {
-            return Optional.of(ImageStore.getCurrentImage(getBackgroundCell(pos)));
+            return Optional.of(getCurrentImage(getBackgroundCell(pos)));
         }
         else {
             return Optional.empty();
@@ -86,7 +86,7 @@ public final class WorldModel
 
             return true;
         } else {
-            Point nextPos = nextPositionMiner(miner, target.position);
+            Point nextPos = miner.nextPositionMiner(this, target.position);
 
             if (!miner.position.equals(nextPos)) {
                 Optional<Entity> occupant = getOccupant(nextPos);
@@ -108,7 +108,7 @@ public final class WorldModel
             return true;
         }
         else {
-            Point nextPos = nextPositionMiner(miner, target.position);
+            Point nextPos = miner.nextPositionMiner(this, target.position);
 
             if (!miner.position.equals(nextPos)) {
                 Optional<Entity> occupant = getOccupant(nextPos);
@@ -171,24 +171,6 @@ public final class WorldModel
         }
     }
 
-    public Point nextPositionMiner(
-            Entity entity, Point destPos)
-    {
-        int horiz = Integer.signum(destPos.x - entity.position.x);
-        Point newPos = new Point(entity.position.x + horiz, entity.position.y);
-
-        if (horiz == 0 || isOccupied(newPos)) {
-            int vert = Integer.signum(destPos.y - entity.position.y);
-            newPos = new Point(entity.position.x, entity.position.y + vert);
-
-            if (vert == 0 || isOccupied(newPos)) {
-                newPos = entity.position;
-            }
-        }
-
-        return newPos;
-    }
-
     public Optional<Entity> getOccupant(Point pos) {
         if (isOccupied(pos)) {
             return Optional.of(getOccupancyCell(pos));
@@ -232,6 +214,19 @@ public final class WorldModel
         }
 
         return Optional.empty();
+    }
+
+    public static PImage getCurrentImage(Object entity) {
+        if (entity instanceof Background) {
+            return ((Background) entity).images.get(
+                    ((Background) entity).imageIndex);
+        } else if (entity instanceof Entity) {
+            return ((Entity) entity).images.get(((Entity) entity).imageIndex);
+        } else {
+            throw new UnsupportedOperationException(
+                    String.format("getCurrentImage not supported for %s",
+                            entity));
+        }
     }
 
 
