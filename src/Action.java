@@ -1,4 +1,4 @@
-pubic final class Action
+public final class Action
 {
     private ActionKind kind;
     private Entity entity;
