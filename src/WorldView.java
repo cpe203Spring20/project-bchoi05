@@ -3,12 +3,13 @@ import processing.core.PImage;
 
 import java.util.Optional;
 
-public final class WorldView {
-    private PApplet screen;
-    private WorldModel world;
-    private int tileWidth;
-    private int tileHeight;
-    private Viewport viewport;
+public final class WorldView
+{
+    public PApplet screen;
+    public WorldModel world;
+    public int tileWidth;
+    public int tileHeight;
+    public Viewport viewport;
 
     public WorldView(
             int numRows,
@@ -16,7 +17,8 @@ public final class WorldView {
             PApplet screen,
             WorldModel world,
             int tileWidth,
-            int tileHeight) {
+            int tileHeight)
+    {
         this.screen = screen;
         this.world = world;
         this.tileWidth = tileWidth;
@@ -24,6 +26,10 @@ public final class WorldView {
         this.viewport = new Viewport(numRows, numCols);
     }
 
+    public void drawViewport() {
+        drawBackground();
+        drawEntities();
+    }
 
     public void drawBackground() {
         for (int row = 0; row < viewport.numRows; row++) {
@@ -38,30 +44,30 @@ public final class WorldView {
             }
         }
     }
-    public void drawViewport() {
-        drawBackground();
-        drawEntities();
-    }
+
     public void drawEntities() {
         for (Entity entity : world.entities) {
             Point pos = entity.position;
 
             if (viewport.contains(pos)) {
                 Point viewPoint = viewport.worldToViewport(pos.x, pos.y);
-                screen.image(WorldModel.getCurrentImage(entity),
+                screen.image(Entity.getCurrentImage(entity),
                         viewPoint.x * tileWidth,
                         viewPoint.y * tileHeight);
             }
         }
     }
+
     public void shiftView(int colDelta, int rowDelta) {
-        int newCol = clamp(viewport.col + colDelta, 0,
+        int newCol = WorldView.clamp(viewport.col + colDelta, 0,
                 world.numCols - viewport.numCols);
-        int newRow = clamp(viewport.row + rowDelta, 0,
+        int newRow = WorldView.clamp(viewport.row + rowDelta, 0,
                 world.numRows - viewport.numRows);
 
         viewport.shift(newCol, newRow);
     }
+
+
     public static int clamp(int value, int low, int high) {
         return Math.min(high, Math.max(value, low));
     }

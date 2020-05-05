@@ -11,12 +11,11 @@ public final class Viewport
     }
 
     public Point viewportToWorld(int col1, int row1) {
-        return new Point(col1 + col, row1 + row);
+        return new Point(col + col1, row + row1);
     }
 
-    public void shift(int col1, int row1) {
-        col = col1;
-        row = row1;
+    public Point worldToViewport(int col1, int row1) {
+        return new Point(col1 - col, row1 - row);
     }
 
     public boolean contains(Point p) {
@@ -24,10 +23,8 @@ public final class Viewport
                 && p.x >= col && p.x < col + numCols;
     }
 
-
-    public Point worldToViewport(int col1, int row1) {
-        return new Point(col1 - col, row1 - row);
+    public void shift(int col1, int row1) {
+        col = col1;
+        row = row1;
     }
-
-
 }

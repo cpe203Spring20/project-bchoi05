@@ -1,18 +1,21 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.LinkedList;
+import java.util.Map;
 
-import processing.core.PApplet;
 import processing.core.PImage;
 
-
-public final class ImageStore {
+public final class ImageStore
+{
     public Map<String, List<PImage>> images;
     public List<PImage> defaultImages;
-    public static final int KEYED_IMAGE_MIN = 5;
-    private static final int KEYED_RED_IDX = 2;
-    private static final int KEYED_GREEN_IDX = 3;
-    private static final int KEYED_BLUE_IDX = 4;
+    private static final String BGND_KEY = "background";
+    private static final String MINER_KEY = "miner";
+    private static final String OBSTACLE_KEY = "obstacle";
+    private static final String ORE_KEY = "ore";
+    private static final String SMITH_KEY = "blacksmith";
+    private static final String VEIN_KEY = "vein";
+    private static final int PROPERTY_KEY = 0;
 
     public ImageStore(PImage defaultImage) {
         this.images = new HashMap<>();
@@ -24,42 +27,30 @@ public final class ImageStore {
         return images.getOrDefault(key, defaultImages);
     }
 
-
-    public void loadImages(
-            Scanner in, PApplet screen)
+    public boolean processLine(
+            String line, WorldModel world)
     {
-        int lineNumber = 0;
-        while (in.hasNextLine()) {
-            try {
-                processImageLine(images, in.nextLine(), screen);
-            }
-            catch (NumberFormatException e) {
-                System.out.println(
-                        String.format("Image format error on line %d",
-                                lineNumber));
-            }
-            lineNumber++;
-        }
-    }
-
-    public static void processImageLine(
-            Map<String, List<PImage>> images, String line, PApplet screen) {
-        String[] attrs = line.split("\\s");
-        if (attrs.length >= 2) {
-            String key = attrs[0];
-            PImage img = screen.loadImage(attrs[1]);
-            if (img != null && img.width != -1) {
-                List<PImage> imgs = Functions.getImages(images, key);
-                imgs.add(img);
-
-                if (attrs.length >= KEYED_IMAGE_MIN) {
-                    int r = Integer.parseInt(attrs[KEYED_RED_IDX]);
-                    int g = Integer.parseInt(attrs[KEYED_GREEN_IDX]);
-                    int b = Integer.parseInt(attrs[KEYED_BLUE_IDX]);
-                    Functions.setAlpha(img, screen.color(r, g, b), 0);
-                }
+        String[] properties = line.split("\\s");
+        if (properties.length > 0) {
+            switch (properties[PROPERTY_KEY]) {
+                case BGND_KEY:
+                    return Functions.parseBackground(properties, world, this);
+                case MINER_KEY:
+                    return Functions.parseMiner(properties, world, this);
+                case OBSTACLE_KEY:
+                    return Functions.parseObstacle(properties, world, this);
+                case ORE_KEY:
+                    return Functions.parseOre(properties, world, this);
+                case SMITH_KEY:
+                    return Functions.parseSmith(properties, world, this);
+                case VEIN_KEY:
+                    return Functions.parseVein(properties, world, this);
             }
         }
+
+        return false;
     }
+
+
 
 }

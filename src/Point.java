@@ -27,13 +27,6 @@ public final class Point
         return result;
     }
 
-    public int distanceSquared(Point p2) {
-        int deltaX = x - p2.x;
-        int deltaY = y - p2.y;
-
-        return deltaX * deltaX + deltaY * deltaY;
-    }
-
     public boolean adjacent(Point p2) {
         return (x == p2.x && Math.abs(y - p2.y) == 1) || (y == p2.y
                 && Math.abs(x - p2.x) == 1);
@@ -61,4 +54,12 @@ public final class Point
             return Optional.of(nearest);
         }
     }
+
+    public int distanceSquared(Point p2) {
+        int deltaX = x - p2.x;
+        int deltaY = y - p2.y;
+
+        return deltaX * deltaX + deltaY * deltaY;
+    }
+
 }
