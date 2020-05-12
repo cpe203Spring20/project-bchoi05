@@ -46,7 +46,7 @@ public final class WorldModel
             Point pos)
     {
         if (withinBounds(pos)) {
-            return Optional.of(Entity.getCurrentImage(getBackgroundCell(pos)));
+            return Optional.of(ImageStore.getCurrentImage(getBackgroundCell(pos)));
         }
         else {
             return Optional.empty();
@@ -54,11 +54,11 @@ public final class WorldModel
     }
 
     public Optional<Entity> findNearest(
-            Point pos, EntityKind kind)
+            Point pos, Class c)
     {
         List<Entity> ofType = new LinkedList<>();
         for (Entity entity : entities) {
-            if (entity.kind == kind) {
+            if (entity.getClass() == c) {
                 ofType.add(entity);
             }
         }
@@ -89,7 +89,7 @@ public final class WorldModel
     }
 
     public void tryAddEntity(Entity entity) {
-        if (isOccupied(entity.position)) {
+        if (isOccupied(entity.getPosition())) {
             // arguably the wrong type of exception, but we are not
             // defining our own exceptions yet
             throw new IllegalArgumentException("position occupied");
@@ -99,50 +99,50 @@ public final class WorldModel
     }
 
     public boolean moveToNotFull(
-            Entity miner,
+            Miners miner,
             Entity target,
             EventScheduler scheduler)
     {
-        if (miner.position.adjacent(target.position)) {
-            miner.resourceCount += 1;
+        if (miner.getPosition().adjacent(target.getPosition())) {
+            miner.setResourceCount(1);
             removeEntity(target);
             scheduler.unscheduleAllEvents(target);
 
             return true;
         }
         else {
-            Point nextPos = miner.nextPositionMiner(this, target.position);
+            Point nextPos = miner.nextPositionMiner(this, target.getPosition());
 
-            if (!miner.position.equals(nextPos)) {
+            if (!miner.getPosition().equals(nextPos)) {
                 Optional<Entity> occupant = getOccupant(nextPos);
                 if (occupant.isPresent()) {
                     scheduler.unscheduleAllEvents(occupant.get());
                 }
 
-                moveEntity(miner, nextPos);
+                moveEntity((Entity) miner, nextPos);
             }
             return false;
         }
     }
 
     public boolean moveToFull(
-            Entity miner,
+            Miners miner,
             Entity target,
             EventScheduler scheduler)
     {
-        if (miner.position.adjacent(target.position)) {
+        if (miner.getPosition().adjacent(target.getPosition())) {
             return true;
         }
         else {
-            Point nextPos = miner.nextPositionMiner(this, target.position);
+            Point nextPos = miner.nextPositionMiner(this, target.getPosition());
 
-            if (!miner.position.equals(nextPos)) {
+            if (!miner.getPosition().equals(nextPos)) {
                 Optional<Entity> occupant = getOccupant(nextPos);
                 if (occupant.isPresent()) {
                     scheduler.unscheduleAllEvents(occupant.get());
                 }
 
-                moveEntity(miner, nextPos);
+                moveEntity((Entity) miner, nextPos);
             }
             return false;
         }
@@ -153,15 +153,16 @@ public final class WorldModel
             Entity target,
             EventScheduler scheduler)
     {
-        if (blob.position.adjacent(target.position)) {
+        if (blob.getPosition().adjacent(target.getPosition())) {
             removeEntity(target);
             scheduler.unscheduleAllEvents(target);
             return true;
         }
         else {
-            Point nextPos = blob.nextPositionOreBlob(this, target.position);
+            OreBlob blob1 = (OreBlob) blob;
+            Point nextPos = blob1.nextPositionOreBlob(this, target.getPosition());
 
-            if (!blob.position.equals(nextPos)) {
+            if (!blob.getPosition().equals(nextPos)) {
                 Optional<Entity> occupant = getOccupant(nextPos);
                 if (occupant.isPresent()) {
                     scheduler.unscheduleAllEvents(occupant.get());
@@ -173,6 +174,7 @@ public final class WorldModel
         }
     }
 
+
     public Optional<Entity> getOccupant(Point pos) {
         if (isOccupied(pos)) {
             return Optional.of(getOccupancyCell(pos));
@@ -183,24 +185,24 @@ public final class WorldModel
     }
 
     public void addEntity(Entity entity) {
-        if (withinBounds(entity.position)) {
-            setOccupancyCell(entity.position, entity);
+        if (withinBounds(entity.getPosition())) {
+            setOccupancyCell(entity.getPosition(), entity);
             entities.add(entity);
         }
     }
 
     public void moveEntity(Entity entity, Point pos) {
-        Point oldPos = entity.position;
+        Point oldPos = entity.getPosition();
         if (withinBounds(pos) && !pos.equals(oldPos)) {
             setOccupancyCell(oldPos, null);
             removeEntityAt(pos);
             setOccupancyCell(pos, entity);
-            entity.position = pos;
+            entity.setPosition(pos);
         }
     }
 
     public void removeEntity(Entity entity) {
-        removeEntityAt(entity.position);
+        removeEntityAt(entity.getPosition());
     }
 
     public void removeEntityAt(Point pos) {
@@ -209,7 +211,7 @@ public final class WorldModel
 
             /* This moves the entity just outside of the grid for
              * debugging purposes. */
-            entity.position = new Point(-1, -1);
+            entity.setPosition(new Point(-1, -1));
             entities.remove(entity);
             setOccupancyCell(pos, null);
         }

@@ -144,7 +144,9 @@ public final class VirtualWorld extends PApplet
             WorldModel world, EventScheduler scheduler, ImageStore imageStore)
     {
         for (Entity entity : world.entities) {
-            entity.scheduleActions(scheduler, world, imageStore);
+            if (entity instanceof Animated) {
+                ((Animated) entity).scheduleActions(scheduler, world, imageStore);
+            }
         }
     }
 

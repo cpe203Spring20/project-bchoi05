@@ -47,11 +47,11 @@ public final class WorldView
 
     public void drawEntities() {
         for (Entity entity : world.entities) {
-            Point pos = entity.position;
+            Point pos = entity.getPosition();
 
             if (viewport.contains(pos)) {
                 Point viewPoint = viewport.worldToViewport(pos.x, pos.y);
-                screen.image(Entity.getCurrentImage(entity),
+                screen.image(ImageStore.getCurrentImage(entity),
                         viewPoint.x * tileWidth,
                         viewPoint.y * tileHeight);
             }
