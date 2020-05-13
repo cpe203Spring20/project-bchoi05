@@ -14,20 +14,12 @@ public final class Ore implements Entity, Animated{
     public int actionPeriod;
     public int animationPeriod;
 
-    private static final int QUAKE_ANIMATION_REPEAT_COUNT = 10;
-    private static final String QUAKE_ID = "quake";
-    private static final int QUAKE_ACTION_PERIOD = 1100;
-    private static final int QUAKE_ANIMATION_PERIOD = 100;
     private static final Random rand = new Random();
     private static final String BLOB_KEY = "blob";
     private static final String BLOB_ID_SUFFIX = " -- blob";
     private static final int BLOB_PERIOD_SCALE = 4;
     private static final int BLOB_ANIMATION_MIN = 50;
     private static final int BLOB_ANIMATION_MAX = 150;
-    private static final String ORE_ID_PREFIX = "ore -- ";
-    private static final int ORE_CORRUPT_MIN = 20000;
-    private static final int ORE_CORRUPT_MAX = 30000;
-    private static final String QUAKE_KEY = "quake";
     public static final String ORE_KEY = "ore";
 
 

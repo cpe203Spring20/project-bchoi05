@@ -159,8 +159,7 @@ public final class WorldModel
             return true;
         }
         else {
-            OreBlob blob1 = (OreBlob) blob;
-            Point nextPos = blob1.nextPositionOreBlob(this, target.getPosition());
+            Point nextPos = (( OreBlob) blob).nextPositionOreBlob(this, target.getPosition());
 
             if (!blob.getPosition().equals(nextPos)) {
                 Optional<Entity> occupant = getOccupant(nextPos);
