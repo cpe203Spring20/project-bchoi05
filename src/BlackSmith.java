@@ -4,7 +4,7 @@ import java.util.Random;
 
 import processing.core.PImage;
 
-public final class BlackSmith implements Entity{
+public final class BlackSmith extends Entity{
     public String id;
     public Point position;
     public List<PImage> images;
@@ -34,16 +34,11 @@ public final class BlackSmith implements Entity{
         this.animationPeriod = animationPeriod;
     }
 
+
     public static BlackSmith createBlacksmith(
             String id, Point position, List<PImage> images) {
         return new BlackSmith(id, position, images, 0, 0, 0,
                 0);
-    }
-
-    public int getAnimationPeriod() {
-            throw new UnsupportedOperationException(
-                    String.format("getAnimationPeriod not supported for %s",
-                            getClass()));
     }
 
     public int getImageIndex() {
@@ -61,11 +56,6 @@ public final class BlackSmith implements Entity{
     public Point getPosition(){
         return position;
     }
-
-    public void nextImage() {
-        imageIndex = (imageIndex + 1) % images.size();
-    }
-
 
 
 

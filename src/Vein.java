@@ -4,7 +4,7 @@ import java.util.Random;
 
 import processing.core.PImage;
 
-public class Vein implements Entity, Animated{
+public class Vein extends ActiveEntity implements Animated{
     public String id;
     public Point position;
     public List<PImage> images;
@@ -20,6 +20,9 @@ public class Vein implements Entity, Animated{
     private static final int ORE_CORRUPT_MAX = 30000;
     public static final String ORE_KEY = "ore";
 
+    public int getactionPeriod(){
+        return actionPeriod;
+    }
 
     public Vein(
             String id,
@@ -52,7 +55,7 @@ public class Vein implements Entity, Animated{
     }
 
 
-    public void executeVeinActivity(
+    public void executeActivity(
             WorldModel world,
             ImageStore imageStore,
             EventScheduler scheduler) {
@@ -94,18 +97,6 @@ public class Vein implements Entity, Animated{
                     Activity.createAction(this, world, imageStore),
                     actionPeriod);
         }
-
-
-    public void nextImage() {
-        imageIndex = (imageIndex + 1) % images.size();
-    }
-
-    public int getAnimationPeriod() {
-        throw new UnsupportedOperationException(
-                String.format("getAnimationPeriod not supported for %s",
-                        getClass()));
-
-    }
 
 
 

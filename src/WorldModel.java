@@ -111,7 +111,7 @@ public final class WorldModel
             return true;
         }
         else {
-            Point nextPos = miner.nextPositionMiner(this, target.getPosition());
+            Point nextPos = miner.nextPosition(this, target.getPosition());
 
             if (!miner.getPosition().equals(nextPos)) {
                 Optional<Entity> occupant = getOccupant(nextPos);
@@ -134,7 +134,7 @@ public final class WorldModel
             return true;
         }
         else {
-            Point nextPos = miner.nextPositionMiner(this, target.getPosition());
+            Point nextPos = miner.nextPosition(this, target.getPosition());
 
             if (!miner.getPosition().equals(nextPos)) {
                 Optional<Entity> occupant = getOccupant(nextPos);
@@ -159,7 +159,7 @@ public final class WorldModel
             return true;
         }
         else {
-            Point nextPos = (( OreBlob) blob).nextPositionOreBlob(this, target.getPosition());
+            Point nextPos = ((OreBlob) blob).nextPosition(this, target.getPosition());
 
             if (!blob.getPosition().equals(nextPos)) {
                 Optional<Entity> occupant = getOccupant(nextPos);

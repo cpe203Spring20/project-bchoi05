@@ -17,14 +17,14 @@ public final class Animation implements Action{
 
     public void executeAction(
             EventScheduler scheduler) {
-        entity.nextImage();
+        ((AnimatedEntity) entity).nextImage();
 
         if (repeatCount != 1) {
             scheduler.scheduleEvent(entity,
                     createAction(entity,
                             Math.max(repeatCount - 1,
                                     0)),
-                    entity.getAnimationPeriod());
+                    ((AnimatedEntity) entity).getAnimationPeriod());
         }
     }
     public static Animation createAction(Entity entity, int repeatCount) {

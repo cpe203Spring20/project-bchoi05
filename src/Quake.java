@@ -4,7 +4,7 @@ import java.util.Random;
 
 import processing.core.PImage;
 
-public final class Quake implements Entity, Animated{
+public final class Quake extends AnimatedEntity implements Animated{
     public String id;
     public Point position;
     public List<PImage> images;
@@ -39,6 +39,10 @@ public final class Quake implements Entity, Animated{
         this.animationPeriod = animationPeriod;
     }
 
+    public int getactionPeriod(){
+        return actionPeriod;
+    }
+
     public Point getPosition(){
         return position;
     }
@@ -53,7 +57,7 @@ public final class Quake implements Entity, Animated{
         return animationPeriod;
     }
 
-    public void executeQuakeActivity(
+    public void executeActivity(
             WorldModel world,
             ImageStore imageStore,
             EventScheduler scheduler) {
@@ -91,6 +95,7 @@ public final class Quake implements Entity, Animated{
     public void nextImage() {
         imageIndex = (imageIndex + 1) % images.size();
     }
+
 
 
 }

@@ -4,7 +4,7 @@ import java.util.Random;
 
 import processing.core.PImage;
 
-public final class MinerNotFull implements Entity, Animated, Miners{
+public final class MinerNotFull extends AnimatedEntity implements Animated, Miners, NextPosition{
     public String id;
     public Point position;
     public List<PImage> images;
@@ -46,7 +46,11 @@ public final class MinerNotFull implements Entity, Animated, Miners{
                 resourceLimit, 0, actionPeriod, animationPeriod);
     }
 
-    public Point nextPositionMiner(WorldModel world, Point destPos) {
+    public int getactionPeriod(){
+        return actionPeriod;
+    }
+
+    public Point nextPosition(WorldModel world, Point destPos) {
         int horiz = Integer.signum(destPos.x - position.x);
         Point newPos = new Point(position.x + horiz, position.y);
 
@@ -80,7 +84,7 @@ public final class MinerNotFull implements Entity, Animated, Miners{
                     getAnimationPeriod());
     }
 
-    public void executeMinerNotFullActivity(
+    public void executeActivity(
             WorldModel world,
             ImageStore imageStore,
             EventScheduler scheduler)

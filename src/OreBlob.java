@@ -4,7 +4,7 @@ import java.util.Random;
 
 import processing.core.PImage;
 
-public final class OreBlob implements Entity, Animated{
+public final class OreBlob extends AnimatedEntity implements Animated, NextPosition{
     public String id;
     public Point position;
     public List<PImage> images;
@@ -36,7 +36,11 @@ public final class OreBlob implements Entity, Animated{
         this.animationPeriod = animationPeriod;
     }
 
-    public void executeOreBlobActivity(
+    public int getactionPeriod(){
+        return actionPeriod;
+    }
+
+    public void executeActivity(
             WorldModel world,
             ImageStore imageStore,
             EventScheduler scheduler) {
@@ -93,7 +97,7 @@ public final class OreBlob implements Entity, Animated{
         return animationPeriod;
     }
 
-    public Point nextPositionOreBlob(WorldModel world, Point destPos) {
+    public Point nextPosition(WorldModel world, Point destPos) {
         int horiz = Integer.signum(destPos.x - position.x);
         Point newPos = new Point(position.x + horiz, position.y);
 
@@ -130,6 +134,7 @@ public final class OreBlob implements Entity, Animated{
                     Animation.createAction(this, 0),
                     getAnimationPeriod());
         }
+
 
 
 

@@ -2,17 +2,15 @@ import processing.core.PImage;
 
 import java.util.List;
 
-public interface Entity {
-    Point getPosition();
+public abstract class Entity {
+    abstract Point getPosition();
 
-    List<PImage> getImages();
+    abstract List<PImage> getImages();
 
-    int getImageIndex();
+    abstract int getImageIndex();
 
-    void setPosition(Point position);
+    abstract void setPosition(Point position);
 
-    void nextImage();
 
-    int getAnimationPeriod();
 }
 

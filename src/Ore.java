@@ -4,7 +4,7 @@ import java.util.Random;
 
 import processing.core.PImage;
 
-public final class Ore implements Entity, Animated{
+public final class Ore extends ActiveEntity implements Animated{
     public String id;
     public Point position;
     public List<PImage> images;
@@ -47,17 +47,13 @@ public final class Ore implements Entity, Animated{
                 actionPeriod, 0);
     }
 
-
-    public int getAnimationPeriod() {
-        throw new UnsupportedOperationException(
-                String.format("getAnimationPeriod not supported for %s",
-                        "ORE"));
-
+    public int getactionPeriod(){
+        return actionPeriod;
     }
 
 
 
-    public void executeOreActivity(
+    public void executeActivity(
             WorldModel world,
             ImageStore imageStore,
             EventScheduler scheduler) {
@@ -103,9 +99,7 @@ public final class Ore implements Entity, Animated{
 
     }
 
-    public void nextImage() {
-        imageIndex = (imageIndex + 1) % images.size();
-    }
+
 
 
 }
