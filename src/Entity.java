@@ -3,13 +3,24 @@ import processing.core.PImage;
 import java.util.List;
 
 public abstract class Entity {
-    abstract Point getPosition();
+    protected List<PImage> images;
+    protected Point position;
+    protected int imageIndex;
+    public Entity(List<PImage> images, Point position, int imageIndex){
+        this.images = images;
+        this.position = position;
+        this.imageIndex = imageIndex;
+    }
+    
+    public Point getPosition(){ return position;};
 
-    abstract List<PImage> getImages();
+    public List<PImage> getImages(){return images;}
 
-    abstract int getImageIndex();
+    public int getImageIndex(){return imageIndex;};
 
-    abstract void setPosition(Point position);
+    public void setPosition(Point position){
+        this.position = position;
+    }
 
 
 }

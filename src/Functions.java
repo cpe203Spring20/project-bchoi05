@@ -218,7 +218,7 @@ public final class Functions
         if (properties.length == OBSTACLE_NUM_PROPERTIES) {
             Point pt = new Point(Integer.parseInt(properties[OBSTACLE_COL]),
                                  Integer.parseInt(properties[OBSTACLE_ROW]));
-            Entity entity = Obstacle.createObstacle(properties[OBSTACLE_ID], pt,
+            Entity entity = Obstacle.createObstacle(pt,
                     imageStore.getImageList(
                                                         OBSTACLE_KEY));
             world.tryAddEntity(entity);
@@ -233,7 +233,7 @@ public final class Functions
         if (properties.length == ORE_NUM_PROPERTIES) {
             Point pt = new Point(Integer.parseInt(properties[ORE_COL]),
                                  Integer.parseInt(properties[ORE_ROW]));
-            Entity entity = Ore.createOre(properties[ORE_ID], pt, Integer.parseInt(
+            Entity entity = Ore.createOre(pt, Integer.parseInt(
                     properties[ORE_ACTION_PERIOD]),
                     imageStore.getImageList(ORE_KEY));
             world.tryAddEntity(entity);
@@ -248,7 +248,7 @@ public final class Functions
         if (properties.length == SMITH_NUM_PROPERTIES) {
             Point pt = new Point(Integer.parseInt(properties[SMITH_COL]),
                                  Integer.parseInt(properties[SMITH_ROW]));
-            Entity entity = BlackSmith.createBlacksmith(properties[SMITH_ID], pt,
+            Entity entity = BlackSmith.createBlacksmith(pt,
                     imageStore.getImageList(
                                                           SMITH_KEY));
             world.tryAddEntity(entity);
@@ -263,7 +263,7 @@ public final class Functions
         if (properties.length == VEIN_NUM_PROPERTIES) {
             Point pt = new Point(Integer.parseInt(properties[VEIN_COL]),
                                  Integer.parseInt(properties[VEIN_ROW]));
-            Entity entity = Vein.createVein(properties[VEIN_ID], pt,
+            Entity entity = Vein.createVein(pt,
                                        Integer.parseInt(
                                                properties[VEIN_ACTION_PERIOD]),
                             imageStore.getImageList(VEIN_KEY));

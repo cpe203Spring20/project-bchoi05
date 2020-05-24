@@ -4,18 +4,10 @@ import java.util.Random;
 
 import processing.core.PImage;
 
-public final class MinerNotFull extends AnimatedEntity implements Animated, Miners, NextPosition{
-    public String id;
-    public Point position;
-    public List<PImage> images;
-    public int imageIndex;
-    public int resourceLimit;
-    public int resourceCount;
-    public int actionPeriod;
-    public int animationPeriod;
-
-    public static final String ORE_KEY = "ore";
-
+public final class MinerNotFull extends AnimatedEntity implements Miners, NextPosition{
+    private String id;
+    private int resourceLimit;
+    private int resourceCount;
 
     public MinerNotFull(
             String id,
@@ -25,15 +17,12 @@ public final class MinerNotFull extends AnimatedEntity implements Animated, Mine
             int resourceCount,
             int actionPeriod,
             int animationPeriod) {
+        super(animationPeriod, 0, images, actionPeriod, position, 0);
         this.id = id;
-        this.position = position;
-        this.images = images;
-        this.imageIndex = 0;
         this.resourceLimit = resourceLimit;
         this.resourceCount = resourceCount;
-        this.actionPeriod = actionPeriod;
-        this.animationPeriod = animationPeriod;
     }
+
 
     public static MinerNotFull createMinerNotFull(
             String id,
@@ -44,10 +33,6 @@ public final class MinerNotFull extends AnimatedEntity implements Animated, Mine
             List<PImage> images) {
         return new MinerNotFull(id, position, images,
                 resourceLimit, 0, actionPeriod, animationPeriod);
-    }
-
-    public int getactionPeriod(){
-        return actionPeriod;
     }
 
     public Point nextPosition(WorldModel world, Point destPos) {
@@ -64,24 +49,6 @@ public final class MinerNotFull extends AnimatedEntity implements Animated, Mine
         }
 
         return newPos;
-    }
-
-
-    public int getAnimationPeriod() {
-        return animationPeriod;
-
-    }
-
-    public void scheduleActions(
-            EventScheduler scheduler,
-            WorldModel world,
-            ImageStore imageStore) {
-            scheduler.scheduleEvent( this,
-                    Activity.createAction(this, world, imageStore),
-                    actionPeriod);
-            scheduler.scheduleEvent(this,
-                    Animation.createAction(this, 0),
-                    getAnimationPeriod());
     }
 
     public void executeActivity(
@@ -112,7 +79,7 @@ public final class MinerNotFull extends AnimatedEntity implements Animated, Mine
         if (resourceCount >= resourceLimit) {
             MinerFull miner = MinerFull.createMinerFull(id, resourceLimit,
                     position, actionPeriod,
-                    animationPeriod,
+                    super.animationPeriod,
                     images);
 
             world.removeEntity(this);
@@ -129,27 +96,6 @@ public final class MinerNotFull extends AnimatedEntity implements Animated, Mine
 
     public void setResourceCount(int i){
         resourceCount += i;
-    }
-
-    public void setPosition(Point position){
-        this.position = position;
-    }
-
-    public void nextImage() {
-        imageIndex = (imageIndex + 1) % images.size();
-    }
-
-    public int getImageIndex() {
-        return imageIndex;
-    }
-
-    public List<PImage> getImages(){
-        return images;
-    }
-
-
-    public Point getPosition(){
-        return position;
     }
 
 }

@@ -4,40 +4,16 @@ import java.util.Random;
 
 import processing.core.PImage;
 
-public final class OreBlob extends AnimatedEntity implements Animated, NextPosition{
-    public String id;
-    public Point position;
-    public List<PImage> images;
-    public int imageIndex;
-    public int resourceLimit;
-    public int resourceCount;
-    public int actionPeriod;
-    public int animationPeriod;
+public final class OreBlob extends AnimatedEntity implements NextPosition{
 
     private static final String QUAKE_KEY = "quake";
-    public static final String ORE_KEY = "ore";
-
 
     public OreBlob(
-            String id,
             Point position,
             List<PImage> images,
-            int resourceLimit,
-            int resourceCount,
             int actionPeriod,
             int animationPeriod) {
-        this.id = id;
-        this.position = position;
-        this.images = images;
-        this.imageIndex = 0;
-        this.resourceLimit = resourceLimit;
-        this.resourceCount = resourceCount;
-        this.actionPeriod = actionPeriod;
-        this.animationPeriod = animationPeriod;
-    }
-
-    public int getactionPeriod(){
-        return actionPeriod;
+        super(animationPeriod, 0, images, actionPeriod, position, 0);
     }
 
     public void executeActivity(
@@ -66,35 +42,14 @@ public final class OreBlob extends AnimatedEntity implements Animated, NextPosit
                 nextPeriod);
     }
 
-    public Point getPosition(){
-        return position;
-    }
 
     public static OreBlob createOreBlob(
-            String id,
             Point position,
             int actionPeriod,
             int animationPeriod,
             List<PImage> images) {
-        return new OreBlob(id, position, images, 0, 0,
+        return new OreBlob(position, images,
                 actionPeriod, animationPeriod);
-    }
-
-    public void nextImage() {
-        imageIndex = (imageIndex + 1) % images.size();
-    }
-
-    public int getImageIndex() {
-        return imageIndex;
-    }
-
-    public List<PImage> getImages(){
-        return images;
-    }
-
-
-    public int getAnimationPeriod() {
-        return animationPeriod;
     }
 
     public Point nextPosition(WorldModel world, Point destPos) {
@@ -117,23 +72,6 @@ public final class OreBlob extends AnimatedEntity implements Animated, NextPosit
 
         return newPos;
     }
-
-    public void setPosition(Point position){
-        this.position = position;
-    }
-
-
-    public void scheduleActions(
-            EventScheduler scheduler,
-            WorldModel world,
-            ImageStore imageStore) {
-            scheduler.scheduleEvent( this,
-                    Activity.createAction(this, world, imageStore),
-                    actionPeriod);
-            scheduler.scheduleEvent(this,
-                    Animation.createAction(this, 0),
-                    getAnimationPeriod());
-        }
 
 
 

@@ -27,6 +27,7 @@ public final class ImageStore
         return images.getOrDefault(key, defaultImages);
     }
 
+    /*
     public boolean processLine(
             String line, WorldModel world)
     {
@@ -49,7 +50,7 @@ public final class ImageStore
         }
 
         return false;
-    }
+    } */
 
 
     public static PImage getCurrentImage(Object entity) {
