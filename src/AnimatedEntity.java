@@ -17,7 +17,6 @@ public abstract class AnimatedEntity extends ActiveEntity {
     {
         return animationPeriod;
     }
-
     public void scheduleActions(
             EventScheduler scheduler,
             WorldModel world,

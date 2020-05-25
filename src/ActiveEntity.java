@@ -8,10 +8,6 @@ public abstract class ActiveEntity extends Entity{
         this.actionPeriod = actionPeriod;
 
     }
-    public int getactionPeriod()
-    {
-        return actionPeriod;
-    }
 
     abstract void executeActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler);
 

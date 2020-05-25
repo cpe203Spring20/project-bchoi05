@@ -412,13 +412,12 @@
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.310546875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="66.5498046875" x="71.15476562795652" xml:space="preserve" y="3.0">MinerFull<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
           <y:UML clipContent="true" constraint="" hasDetailsColor="false" omitDetails="false" stereotype="" use3DEffect="true">
             <y:AttributeLabel xml:space="preserve">-id: String
-#resourceLimit: int
-#resourceCount: int
-</y:AttributeLabel>
-            <y:MethodLabel xml:space="preserve">+transformFull
-+createMinerFull: MinerFull
-+executeMinerFullActivity
-+setResourceCount
+-resourceLimit: int
+-resourceCount: int</y:AttributeLabel>
+            <y:MethodLabel xml:space="preserve">+transformFull: void
++createMinerFull: MinerFull &lt;&lt;static&gt;&gt;
++executeActivity: void
++setResourceCount: void
 +nextPosition: Point</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
@@ -438,7 +437,7 @@
 -resourceCount: int</y:AttributeLabel>
             <y:MethodLabel xml:space="preserve">+createMinerNotFull: MinerNotFull &lt;&lt;static&gt;&gt;
 +nextPosition: Point
-+executeActivity: boolean
++executeActivity: void
 +transformNotFull: boolean
 +setResourceCount</y:MethodLabel>
           </y:UML>
@@ -449,13 +448,13 @@
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="77.50890462282155" width="186.96583821177683" x="1226.5851868907616" y="-180.33097058077226"/>
+          <y:Geometry height="77.50890462282155" width="259.47836612523315" x="1226.5851868907616" y="-180.33097058077226"/>
           <y:Fill color="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.310546875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="62.34130859375" x="62.31226480901341" xml:space="preserve" y="3.0">Obstacle<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.310546875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="62.34130859375" x="98.56852876574158" xml:space="preserve" y="3.0">Obstacle<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
           <y:UML clipContent="true" constraint="" hasDetailsColor="false" omitDetails="false" stereotype="" use3DEffect="true">
             <y:AttributeLabel xml:space="preserve"/>
-            <y:MethodLabel xml:space="preserve">+createObstacle: Obstacle</y:MethodLabel>
+            <y:MethodLabel xml:space="preserve">+createObstacle: Obstacle &lt;&lt;static&gt;&gt;</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>
@@ -475,8 +474,8 @@
 -BLOB_ANIMATION_MAX: INT
 -BLOB_ANIMATION_MIN: INT
 </y:AttributeLabel>
-            <y:MethodLabel xml:space="preserve">+createOre: Ore
-+executeOreActivity: void</y:MethodLabel>
+            <y:MethodLabel xml:space="preserve">+createOre: Ore &lt;&lt;static&gt;&gt;
++executeActivity: void</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>
@@ -485,13 +484,13 @@
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="108.12976314841205" width="186.96583821177683" x="1217.3804643507906" y="420.5920425474593"/>
+          <y:Geometry height="108.12976314841205" width="245.26627934395492" x="1217.3804643507906" y="420.5920425474593"/>
           <y:Fill color="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.310546875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="57.5615234375" x="64.70215738713841" xml:space="preserve" y="3.0">OreBlob<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.310546875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="57.5615234375" x="93.85237795322746" xml:space="preserve" y="3.0">OreBlob<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
           <y:UML clipContent="true" constraint="" hasDetailsColor="false" omitDetails="false" stereotype="" use3DEffect="true">
             <y:AttributeLabel xml:space="preserve">-QUAKE_KEY: String</y:AttributeLabel>
-            <y:MethodLabel xml:space="preserve">+executeActivity: void
+            <y:MethodLabel xml:space="preserve">+ executeActivity: void
 +createOreBlob: OreBlob&lt;&lt;static&gt;&gt;
 +nextPosition: Point</y:MethodLabel>
           </y:UML>
@@ -510,7 +509,7 @@
             <y:AttributeLabel xml:space="preserve">-QUAKE_ANIMATION_REPEAT_COUNT: int
 </y:AttributeLabel>
             <y:MethodLabel xml:space="preserve">+createQuake: Quake
-+executeQuakeActivity: void
++executeActivity: void
 </y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
@@ -529,7 +528,7 @@
 -ORE_CORRUPT_MIN: int
 -rand: Random
 -ORE_CORRUPT_MAX: int</y:AttributeLabel>
-            <y:MethodLabel xml:space="preserve">+createVein(): Vein
+            <y:MethodLabel xml:space="preserve">+createVein(): Vein &lt;&lt;static&gt;&gt;
 +executeActivity(): void</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
@@ -562,7 +561,7 @@
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.310546875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="42.68896484375" x="98.62047394314254" xml:space="preserve" y="26.1328125">Entity
 <y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
-          <y:UML clipContent="true" constraint="" hasDetailsColor="false" omitDetails="false" stereotype="Interface" use3DEffect="true">
+          <y:UML clipContent="true" constraint="" hasDetailsColor="false" omitDetails="false" stereotype="abstract" use3DEffect="true">
             <y:AttributeLabel xml:space="preserve">#images: List&lt;PImage&gt;
 #position: Point
 #imageIndex: int</y:AttributeLabel>
@@ -578,7 +577,7 @@
       <data key="d4" xml:space="preserve"/>
       <data key="d6">
         <y:UMLClassNode>
-          <y:Geometry height="95.83987852282837" width="198.52073979236252" x="978.0795845012416" y="829.3044287364855"/>
+          <y:Geometry height="95.83987852282837" width="198.52073979236252" x="978.0795845012416" y="894.4284781128532"/>
           <y:Fill color="#C0C0C0" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
           <y:NodeLabel alignment="center" autoSizePolicy="content" fontFamily="Dialog" fontSize="13" fontStyle="bold" hasBackgroundColor="false" hasLineColor="false" height="19.310546875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" textColor="#000000" verticalTextPosition="bottom" visible="true" width="88.74755859375" x="54.88659059930626" xml:space="preserve" y="26.1328125">NextPosition<y:LabelModel><y:SmartNodeLabelModel distance="4.0"/></y:LabelModel><y:ModelParameter><y:SmartNodeLabelModelParameter labelRatioX="0.0" labelRatioY="0.0" nodeRatioX="0.0" nodeRatioY="0.0" offsetX="0.0" offsetY="0.0" upX="0.0" upY="-1.0"/></y:ModelParameter></y:NodeLabel>
@@ -591,7 +590,6 @@
     </node>
     <node id="n25">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="133.9796960232527" width="272.85217401886246" x="705.0007878905252" y="76.56072523640768"/>
@@ -602,16 +600,14 @@
             <y:AttributeLabel xml:space="preserve">#actionPeriod: int
 </y:AttributeLabel>
             <y:MethodLabel xml:space="preserve">+ getactionPeriod(): int
-+ executeActivity(): void
-+ scheduleActions(): void
-</y:MethodLabel>
++ executeActivity() &lt;&lt;abstract&gt;&gt;: void
++ scheduleActions(): void</y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>
     </node>
     <node id="n26">
       <data key="d4" xml:space="preserve"/>
-      <data key="d5"/>
       <data key="d6">
         <y:UMLClassNode>
           <y:Geometry height="184.06479738398048" width="245.02211107714015" x="732.8308508322475" y="268.3146590748761"/>
@@ -625,7 +621,8 @@
 </y:AttributeLabel>
             <y:MethodLabel xml:space="preserve">+nextImage(): void
 +getAnimationPeriod(): int
-+scheduleActions(): void</y:MethodLabel>
++scheduleActions(): void
++executeActivity(): &lt;&lt;abstract&gt;&gt; void </y:MethodLabel>
           </y:UML>
         </y:UMLClassNode>
       </data>
@@ -727,7 +724,7 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e9" source="n17" target="n23">
+    <edge id="e9" source="n11" target="n13">
       <data key="d8" xml:space="preserve"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -738,7 +735,7 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e10" source="n11" target="n13">
+    <edge id="e10" source="n12" target="n13">
       <data key="d8" xml:space="preserve"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -749,7 +746,7 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e11" source="n12" target="n13">
+    <edge id="e11" source="n16" target="n22">
       <data key="d8" xml:space="preserve"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -760,7 +757,7 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e12" source="n16" target="n22">
+    <edge id="e12" source="n15" target="n22">
       <data key="d8" xml:space="preserve"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -771,18 +768,7 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e13" source="n15" target="n22">
-      <data key="d8" xml:space="preserve"/>
-      <data key="d10">
-        <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
-          <y:Arrows source="none" target="white_delta"/>
-          <y:BendStyle smoothed="false"/>
-        </y:PolyLineEdge>
-      </data>
-    </edge>
-    <edge id="e14" source="n23" target="n5">
+    <edge id="e13" source="n23" target="n5">
       <data key="d8" xml:space="preserve"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -793,7 +779,7 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e15" source="n0" target="n23">
+    <edge id="e14" source="n0" target="n23">
       <data key="d8" xml:space="preserve"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -804,7 +790,7 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e16" source="n1" target="n13">
+    <edge id="e15" source="n1" target="n13">
       <data key="d8" xml:space="preserve"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -815,7 +801,7 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e17" source="n2" target="n13">
+    <edge id="e16" source="n2" target="n13">
       <data key="d8" xml:space="preserve"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -826,7 +812,7 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e18" source="n10" target="n22">
+    <edge id="e17" source="n10" target="n22">
       <data key="d8" xml:space="preserve"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -837,7 +823,7 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e19" source="n15" target="n24">
+    <edge id="e18" source="n15" target="n24">
       <data key="d8" xml:space="preserve"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -848,7 +834,7 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e20" source="n16" target="n24">
+    <edge id="e19" source="n16" target="n24">
       <data key="d8" xml:space="preserve"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -859,7 +845,7 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e21" source="n19" target="n24">
+    <edge id="e20" source="n19" target="n24">
       <data key="d8" xml:space="preserve"/>
       <data key="d10">
         <y:PolyLineEdge>
@@ -870,121 +856,121 @@
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e22" source="n25" target="n23">
+    <edge id="e21" source="n14" target="n23">
       <data key="d8" xml:space="preserve"/>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="white_delta"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e23" source="n26" target="n25">
+    <edge id="e22" source="n17" target="n23">
       <data key="d8" xml:space="preserve"/>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="white_delta"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e24" source="n16" target="n26">
+    <edge id="e23" source="n18" target="n25">
       <data key="d8" xml:space="preserve"/>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="white_delta"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e25" source="n15" target="n26">
+    <edge id="e24" source="n21" target="n25">
       <data key="d8" xml:space="preserve"/>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="white_delta"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e26" source="n18" target="n25">
+    <edge id="e25" source="n20" target="n26">
       <data key="d8" xml:space="preserve"/>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="white_delta"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e27" source="n18" target="n25">
+    <edge id="e26" source="n19" target="n26">
       <data key="d8" xml:space="preserve"/>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="white_delta"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e28" source="n21" target="n25">
+    <edge id="e27" source="n16" target="n26">
       <data key="d8" xml:space="preserve"/>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="white_delta"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e29" source="n19" target="n26">
+    <edge id="e28" source="n15" target="n26">
       <data key="d8" xml:space="preserve"/>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="white_delta"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e30" source="n20" target="n26">
+    <edge id="e29" source="n26" target="n25">
       <data key="d8" xml:space="preserve"/>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="white_delta"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
       </data>
     </edge>
-    <edge id="e31" source="n14" target="n23">
+    <edge id="e30" source="n25" target="n23">
       <data key="d8" xml:space="preserve"/>
       <data key="d9"/>
       <data key="d10">
         <y:PolyLineEdge>
           <y:Path sx="0.0" sy="0.0" tx="0.0" ty="0.0"/>
-          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="white_delta"/>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
