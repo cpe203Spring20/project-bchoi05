@@ -4,7 +4,7 @@ import java.util.Random;
 
 import processing.core.PImage;
 
-public final class OreBlob extends AnimatedEntity implements NextPosition{
+public final class OreBlob extends AnimatedEntity{
 
     private static final String QUAKE_KEY = "quake";
 

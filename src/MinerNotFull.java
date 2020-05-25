@@ -4,7 +4,7 @@ import java.util.Random;
 
 import processing.core.PImage;
 
-public final class MinerNotFull extends AnimatedEntity implements Miners, NextPosition{
+public final class MinerNotFull extends Miners{
     private String id;
     private int resourceLimit;
     private int resourceCount;
