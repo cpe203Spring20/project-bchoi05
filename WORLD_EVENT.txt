@@ -1,0 +1,25 @@
+Note: Code will be found in Nadav's github account (nadav-levanoni) in the repository named P4. link: https://github.com/nadav-levanoni/P4
+
+1. How to trigger the event:
+Our event is a volcanic erruption which will be triggered by a mouse click on the game's interface. The erruption will be centered around the tile clicked.
+
+2. What should happen when the even is triggered:
+Multiple things will occur when the event is triggered.
+	- Tiles within 1 square unit of the event will be changed into "lava" background tiles.
+	- Tiles within 3 square unit of the event will be changed into "magma stone" background tiles.
+	- Blacksmiths within 1 square unit of the event will be effected.
+	- Ore Blobs within 3 square unit of the event will be effected.
+	- Miners within 3 square unit of the event will be effected.
+	- One Magma Blob will spawn at the epicenter of the event (where the mouse was clicked).
+
+3. What the affected entities should do:
+	- Affected Blacksmiths will transform into Endangered Blacksmiths. Endangered Blacksmiths lose their functionality, meaning miners (full) will no longer bring mined Ore to them.
+	- Affected Miners will transform into BuilderNotFull. BuilderNotFull will activley find Endangered Blacksmiths and destroy them for their resources and transform in to a BuilderFull.
+	- BuilderFull, then finds and goes to a safe spot, next to an existing non-endangered Blacksmith then transforms in to a Blacksmith.
+	- Affected Ore Blobs will transform into Magma Blobs. Description of what a Magma Blob does found in #4.
+
+4. What the new entity is and how it behaves.
+Note: As previously mentioned, Magma Blobs can enter the game by either transforming Ore Blobs near the erruption into Magma Blobs, and a magma blob is spawned in the center of an erruption.
+Magma Blobs behave similar to Zombies. A Magma Blob activley seeks out and goes to existing Ore Blobs. Once a Magma Blob encounters and interacts with an Ore Blob it will infect and convert the Ore Blob in to a Magma Blob. Final Note: Magma Blob, spawns from the event, is created from Ore Blobs close to the event, AND is created when an Ore Blob is infected by a Magma Blob.
+
+5. Nadav and Billy. We both knocked out this project together in one day in about 8/9 hours. Initially we tried working simultaneously, but we ended up having to start our project over because github merging issues. After that we decided one person should share their screen and program a section of the project while the other person coached and debugged them as they went. We both also split the work on creating the new animations. Basically we shared equal responsibilites over everything.
