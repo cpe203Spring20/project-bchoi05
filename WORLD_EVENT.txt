@@ -1,4 +1,4 @@
-Note: Code will be found in Nadav's github account (nadav-levanoni) in the repository named P4. link: https://github.com/nadav-levanoni/P4
+Note: Code will be found in Nadav's github account (nadav-levanoni)
 
 1. How to trigger the event:
 Our event is a volcanic erruption which will be triggered by a mouse click on the game's interface. The erruption will be centered around the tile clicked.
